@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心理健康自我评估</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .disclaimer {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .question-block {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #357ae8;
+        }
+        #result {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .severity {
+            font-weight: bold;
+            margin-top: 15px;
+            color: #e74c3c;
+        }
+        .suggestion {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>心理健康自我评估</h1>
+        <div class="disclaimer">
+            <strong>重要提示：</strong>本测试基于患者健康问卷（PHQ-9）的思路设计，仅作为自我筛查和参考工具，<strong>不能替代专业的医学诊断</strong>。如果您正经历严重的情绪困扰或有自伤念头，请立即寻求专业帮助。
+        </div>
+
+        <p>请根据您<strong>最近两周</strong>的实际情况，选择最符合的选项：</p>
+
+        <form id="depressionTest">
+            <!-- 问题1 -->
+            <div class="question-block">
+                <div class="question-text">1. 做事情时缺乏兴趣或乐趣</div>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="0" required> 完全不会</label>
+                    <label><input type="radio" name="q1" value="1"> 有几天</label>
+                    <label><input type="radio" name="q1" value="2"> 超过一半的天数</label>
+                    <label><input type="radio" name="q1" value="3"> 几乎每天</label>
+                </div>
+            </div>
+
+            <!-- 问题2 -->
+            <div class="question-block">
+                <div class="question-text">2. 感到心情低落、沮丧或绝望</div>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="0" required> 完全不会</label>
+                    <label><input type="radio" name="q2" value="1"> 有几天</label>
+                    <label><input type="radio" name="q2" value="2"> 超过一半的天数</label>
+                    <label><input type="radio" name="q2" value="3"> 几乎每天</label>
+                </div>
+            </div>
+
+            <!-- 问题3 -->
+            <div class="question-block">
+                <div class="question-text">3. 入睡困难、睡不安稳或睡眠过多</div>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="0" required> 完全不会</label>
+                    <label><input type="radio" name="q3" value="1"> 有几天</label>
+                    <label><input type="radio" name="q3" value="2"> 超过一半的天数</label>
+                    <label><input type="radio" name="q3" value="3"> 几乎每天</label>
+                </div>
+            </div>
+
+            <!-- 问题4 -->
+            <div class="question-block">
+                <div class="question-text">4. 感到疲倦或没有精力</div>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="0" required> 完全不会</label>
+                    <label><input type="radio" name="q4" value="1"> 有几天</label>
+                    <label><input type="radio" name="q4" value="2"> 超过一半的天数</label>
+                    <label><input type="radio" name="q4" value="3"> 几乎每天</label>
+                </div>
+            </div>
+
+            <!-- 问题5 -->
+            <div class="question-block">
+                <div class="question-text">5. 食欲不振或饮食过量</div>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="0" required> 完全不会</label>
+                    <label><input type="radio" name="q5" value="1"> 有几天</label>
+                    <label><input type="radio" name="q5" value="2"> 超过一半的天数</label>
+                    <label><input type="radio" name="q5" value="3"> 几乎每天</label>
+                </div>
+            </div>
+
+            <!-- 问题6 -->
+            <div class="question-block">
+                <div class="question-text">6. 对自己感觉不好 - 或觉得让自己或家人失望</div>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="0" required> 完全不会</label>
+                    <label><input type="radio" name="q6" value="1"> 有几天</label>
+                    <label><input type="radio" name="q6" value="2"> 超过一半的天数</label>
+                    <label><input type="radio" name="q6" value="3"> 几乎每天</label>
+                </div>
+            </div>
+
+            <!-- 问题7 -->
+            <div class="question-block">
+                <div class="question-text">7. 难以集中注意力，例如阅读报纸或看电视时</div>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="0" required> 完全不会</label>
+                    <label><input type="radio" name="q7" value="1"> 有几天</label>
+                    <label><input type="radio" name="q7" value="2"> 超过一半的天数</label>
+                    <label><input type="radio" name="q7" value="3"> 几乎每天</label>
+                </div>
+            </div>
+
+            <!-- 问题8 -->
+            <div class="question-block">
+                <div class="question-text">8. 行动或说话速度缓慢到引起他人注意？或者相反 - 感到坐立不安、烦躁，来回走动的情况比平时多很多</div>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="0" required> 完全不会</label>
+                    <label><input type="radio" name="q8" value="1"> 有几天</label>
+                    <label><input type="radio" name="q8" value="2"> 超过一半的天数</label>
+                    <label><input type="radio" name="q8" value="3"> 几乎每天</label>
+                </div>
+            </div>
+
+            <!-- 问题9 -->
+            <div class="question-block">
+                <div class="question-text">9. 有不如死掉或用某种方式伤害自己的念头</div>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="0" required> 完全不会</label>
+                    <label><input type="radio" name="q9" value="1"> 有几天</label>
+                    <label><input type="radio" name="q9" value="2"> 超过一半的天数</label>
+                    <label><input type="radio" name="q9" value="3"> 几乎每天</label>
+                </div>
+            </div>
+
+            <button type="submit">提交评估</button>
+        </form>
+
+        <div id="result">
+            <h2>评估结果</h2>
+            <p>您的总得分：<span id="totalScore"></span></p>
+            <div class="severity" id="severityLevel"></div>
+            <div class="suggestion" id="suggestionText"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('depressionTest').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 计算总分
+            let totalScore = 0;
+            for (let i = 1; i <= 9; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedOption) {
+                    totalScore += parseInt(selectedOption.value);
+                }
+            }
+
+            // 显示结果
+            document.getElementById('totalScore').textContent = totalScore;
+            
+            let severityText = '';
+            let suggestionText = '';
+
+            // 根据分数评估严重程度并提供建议
+            if (totalScore <= 4) {
+                severityText = '轻度或无抑郁症状';
+                suggestionText = '您目前的情绪状态大致良好。建议保持健康的生活习惯，如规律作息、适度运动和保持社交活动。如果偶尔感到情绪低落，这是正常的，通常可以通过自我调节缓解。';
+            } else if (totalScore <= 9) {
+                severityText = '轻度抑郁症状';
+                suggestionText = '您可能正在经历一些抑郁症状。建议关注自己的情绪变化，尝试与信任的人交谈。如果这些状况持续存在或影响日常生活，可以考虑咨询心理咨询师或医生进行进一步评估。';
+            } else if (totalScore <= 14) {
+                severityText = '中度抑郁症状';
+                suggestionText = '您的抑郁症状已经达到中等程度，很可能对日常生活造成了明显影响。强烈建议您寻求专业帮助，如心理咨询师或精神科医生。他们可以提供专业的评估和治疗建议，如心理治疗（谈话疗法）[citation:4][citation:8]或必要的药物治疗[citation:4]。';
+            } else if (totalScore <= 19) {
+                severityText = '中重度抑郁症状';
+                suggestionText = '您的抑郁症状比较严重，很可能对生活造成了显著困扰。请务必尽快寻求专业医疗帮助，如前往医院的精神科或心理科就诊。专业的治疗（如心理疗法[citation:8]和/或药物[citation:4]）对改善症状非常重要。如果曾有自伤或自杀念头，请立即联系信任的人或求助危机干预热线。';
+            } else {
+                severityText = '重度抑郁症状';
+                suggestionText = '您的评估结果显示抑郁症状非常严重，必须立即寻求专业帮助。请尽快前往医院精神科就诊，或者联系信任的人陪同您就医。专业的治疗（可能包括药物治疗[citation:4]、心理治疗[citation:4][citation:8]或其他干预）是必要的。如果您有任何自伤或自杀的想法，请立即拨打危机干预电话或前往最近医院的急诊室。';
+            }
+
+            document.getElementById('severityLevel').textContent = '严重程度：' + severityText;
+            document.getElementById('suggestionText').innerHTML = '<strong>建议：</strong>' + suggestionText;
+            document.getElementById('result').style.display = 'block';
+
+            // 滚动到结果区域
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
